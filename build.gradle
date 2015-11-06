@@ -1,5 +1,6 @@
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
+apply plugin: 'maven-publish'
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -8,4 +9,16 @@ repositories {
 
 apply plugin: 'idea'
 dependencies {
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			groupId 'de.kilobyte22.configparser'
+			artifactId 'config-parser'
+			version '1.0'
+
+			from components.java
+		}
+	}
 }
